@@ -1,4 +1,5 @@
-package main
+package hello04_pointer
+
 import "fmt"
 
 /**
@@ -26,6 +27,6 @@ func fnPointer(a *int) {
 /**
  * 交换两个参数的值（注意：参数是指针，交换两个指针地址即可交换两个参数的值）
  */
-func swap(a,b *int) {
-	*a,*b = *b,*a
+func swap(a, b *int) {
+	*a, *b = *b, *a
 }

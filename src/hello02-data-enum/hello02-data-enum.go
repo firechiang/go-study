@@ -1,4 +1,4 @@
-package main
+package hello02_data_enum
 
 import "fmt"
 
