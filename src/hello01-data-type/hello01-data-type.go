@@ -20,6 +20,9 @@ const (
 )
 
 func main() {
+	// 注意：interface{}表示任意类型就相当于java的Object类型
+	var object interface{} = 12
+	fmt.Println("", object)
 	// 注意：nil表示空指针;如果是结构体指定nil指针，是可以使用该指针调用结构体的函数的，它不会报错，但是取属性还是会报错
 	var aa *string = nil
 	fmt.Println(aa)
@@ -75,7 +78,11 @@ func convertObject() {
 	var a1 int32 = 10
 	// 强制转换
 	var a2 float32 = float32(a1)
-	fmt.Println(a1, a2)
+	// interface{} 表示任意类型
+	var a3 interface{} = 12
+	// 将任意类型进行强制转换
+	var a4 = a3.(float32)
+	fmt.Println(a1, a2, a4)
 }
 
 /**
@@ -95,6 +102,12 @@ func variableType() {
  * 变量定义
  */
 func variableObject() {
+	// 定义跨行的字符串变量（注意：如果字符串变量要跨行那就必须使用``符号包起来）
+	var straaa string = `
+    asdasdasdas 
+    asSSSDSDD
+    `
+	fmt.Println("", straaa)
 	var a1 int32 = 1
 	// 同时定义多个变量并赋值
 	var a2, a3 int32 = 2, 3
@@ -114,3 +127,11 @@ func pointer() {
 	*pa = 3
 	fmt.Println(a)
 }
+
+// 使用类型别名来定义变量（这个和Rust一样）
+
+// 定义一个类型User它是实际类型string
+type User string
+
+// 定义一个类型AFunc它是实际类型是一个函数
+type AFunc func(a int, b int) int32

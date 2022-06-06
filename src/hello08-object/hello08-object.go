@@ -24,6 +24,10 @@ func (node *TreeNode) setValue(value int) {
 	node.value = value
 }
 
+// 为结构体实现toString()函数
+func (node *TreeNode) String() string {
+	return fmt.Sprintf("TreeNode:{value=%d}", node.value)
+}
 func createTreeNode(value int) *TreeNode {
 	return &TreeNode{value: value}
 }
