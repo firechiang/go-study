@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// 接口组合简单使用
+// 接口组合简单使用（组合接口相当于继承其它接口）
 
 // 定义第一个接口
 type Dogo interface {
@@ -15,6 +15,7 @@ type Godo interface {
 }
 
 // 定义组合接口（就是将多个接口组合到一起，到时候当参数传递的时候，就必须传递一个实现了多个接口的实体）
+// 注意：组合接口表示本身也是其它接口，就是说Anmi接口本身也是Dogo和Godo接口
 type Anmi interface {
 	Dogo
 	Godo

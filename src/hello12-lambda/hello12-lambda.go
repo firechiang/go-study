@@ -62,5 +62,8 @@ func main() {
 	fmt.Println(fi())
 	fmt.Println(fi())
 	fmt.Println(fi())
+	func() {
+		fmt.Println("该函数体立马执行，因为最后加了括号")
+	}()
 
 }
