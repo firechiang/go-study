@@ -1,3 +1,4 @@
+### 注意：Go语言里面都是值传递
 #### 一、GOPATH简单说明
 ##### Linux 默认GOPATH路劲在 ~/go目录，Windows默认在%USERPROFILE%\go目录
 ##### 官方推荐所有项目和第三方库都放在同一个GOPATH目录下（注意：也可以将每个项目放在不同的GOPATH下）
