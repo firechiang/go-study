@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	// 注意：添加下滑线该包没有被显示调用但是要引进来（pprof是性能分析程序，有了pprof之后http server程序可以使用 /debug/pprof 连接查看性能分析）
+	_ "net/http/pprof"
 	"os"
 	"strings"
 )
