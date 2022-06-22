@@ -3,16 +3,24 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"go-study/src/hello22-reptile/engine"
+	"go-study/src/hello22-reptile/zhenai/parser"
 	"golang.org/x/net/html/charset"
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/transform"
 	"io"
 	"io/ioutil"
 	"net/http"
+	"regexp"
 )
 
 func main() {
-	FetchCity()
+	//FetchCity()
+	request := engine.Request{
+		Url:        "https://www.zhenai.com/zhenghun",
+		ParserFunc: parser.ParserCityList,
+	}
+	engine.Run(request)
 }
 
 func FetchCity() string {
@@ -30,7 +38,8 @@ func FetchCity() string {
 		if err != nil {
 
 		}
-		fmt.Printf("%s", all)
+		extractCityList(all)
+		//fmt.Printf("%s", all)
 	}
 	return ""
 }
@@ -44,4 +53,15 @@ func DetermineEncoding(reader io.Reader) encoding.Encoding {
 	}
 	e, _, _ := charset.DetermineEncoding(bytes, "")
 	return e
+}
+
+// 提取城市列表
+func extractCityList(contents []byte) {
+	// ^ 代表取反；[^>]就是只只要不是>就可以匹配
+	reg, _ := regexp.Compile(`<a href="(http://www.zhenai.com/zhenghun/[0-9a-z]+)" [^>]*>([^<]+)</a>`)
+	//matches := reg.FindAll(contents, -1)
+	matches := reg.FindAllSubmatch(contents, -1)
+	for _, m := range matches {
+		fmt.Printf("Url:%s,City:%s\n", m[1], m[2])
+	}
 }

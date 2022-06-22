@@ -10,6 +10,7 @@ import (
 const text = "My email is jiangjian@outlook.com"
 
 func main() {
+	// ^ 代表取反；[^>]就是只只要不是>就可以匹配
 	// 编译正则表达式（双斜杠表示转义）
 	reg, err := regexp.Compile("[a-z-A-Z-0-9]+@.+\\.(com)")
 	// 编译正则表达式不会出现错误

@@ -2,6 +2,7 @@ package hello01
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 	"unicode/utf8"
 )
@@ -47,6 +48,9 @@ func stringTest() {
 	strings.ToLower(str)
 	// 转大写
 	strings.ToUpper(str)
+	// 字符串转整数
+	num, err := strconv.Atoi("3")
+	fmt.Println("", num, err)
 }
 
 // 遍历打印一个字符串的每一个字符（注意：在Go里面没有char类型与之对应的是rune类型但是rune类型站4个字节）
