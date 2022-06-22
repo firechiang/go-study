@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 // 接口组合简单使用（组合接口相当于继承其它接口）
-
+// Go接口函数一般不多就两三个，如果函数多的话建议做拆分，再用接口组合的方式进行组合
 // 定义第一个接口
 type Dogo interface {
 	action()

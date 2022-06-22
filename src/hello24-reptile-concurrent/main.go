@@ -3,8 +3,8 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"go-study/src/hello22-reptile/engine"
-	"go-study/src/hello22-reptile/zhenai/parser"
+	"go-study/src/hello24-reptile-concurrent/engine"
+	"go-study/src/hello24-reptile-concurrent/zhenai/parser"
 	"golang.org/x/net/html/charset"
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/transform"
@@ -14,12 +14,17 @@ import (
 	"regexp"
 )
 
-// 单机版爬虫
+// 并发简单版爬虫
 func main() {
 	//FetchCity()
 	request := engine.Request{
 		Url:        "https://www.zhenai.com/zhenghun",
 		ParserFunc: parser.ParserCityList,
+	}
+	simpleScheduler := engine.SimpleScheduler{}
+	engine := engine.ConcurrentEngine{
+		Scheduler: &simpleScheduler,
+		WorkCount: 5,
 	}
 	engine.Run(request)
 }

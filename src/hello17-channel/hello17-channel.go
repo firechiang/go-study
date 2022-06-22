@@ -5,7 +5,7 @@ import (
 	"sync"
 )
 
-// channel管道简单使用
+// channel管道简单使用（往channel里面发送数据时必须要有空闲goroutine去接收数据，否则发送数据代码将会进入等待）
 
 func channelDemo(wg *sync.WaitGroup) {
 	// 创建一个channel它里面传输的数据类型是int（注意：chan表示就是channel）
